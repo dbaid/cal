@@ -25,6 +25,6 @@ class Users(Base):
         return db.session.query(Users).filter(Users.u_id == id).first()
     
     @staticmethod
-    def get_user_list():
-        return db.session.query(Users).all()
+    def get_metadata():
+        return  [column.name  for column in Users.__table__.columns]
 

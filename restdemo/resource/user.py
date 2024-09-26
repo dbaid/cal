@@ -26,7 +26,11 @@ class User(Resource):
     parser.add_argument(
         'activity_level', type=float, required=False,
         help='{error_msg}'
-    )   
+    ) 
+    parser.add_argument(
+        'meta', type=int, required=False,
+        help='{error_msg}'
+    )       
     # def get(self, username):
     #     """
     #     get user detail information
@@ -43,6 +47,11 @@ class User(Resource):
         get user detail information
         """
         print(id)
+        data = User.parser.parse_args()
+        if data.get('meta') == 1:
+            col_list = UserModel.get_metadata()
+            return {i: col_list[i] for i in range(len(col_list))}
+        
         user = UserModel.query_by_id(id)
          
         if user:
