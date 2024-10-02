@@ -98,17 +98,17 @@ if __name__ == "__main__":
     user_id = "u_test12348"
     # user_id = 'aa'
     # user_id = "u_test12345"
-    u=Userdata(user_id)
+    # u=Userdata(user_id)
     # print(u.update_data('bmr', 1600))
     # print(u.delete_data())
-    # d=Dailydata(user_id)
+    d=Dailydata(user_id)
     # user = u.add_data(name="test", gender=True, age=20, weight=60, height=160, activity_level=1.2)
-    print(u.search_data('aaa','bbb'))
+    # print(u.search_data('aaa','bbb'))
     # print(u.get_all_columns())
     # dailyinfo = d.add_data(food_name = '漢堡',food_calories= 200)
     # dailyinfo = d.add_data(exercise_name = '爬山',exercise_duration= 200)
-    # dailyinfo = d.search_all_data('aaa','bbb')
-    # print(dailyinfo)
+    dailyinfo = d.search_all_data('aaa','bbb')
+    print(dailyinfo)
     
 
 
