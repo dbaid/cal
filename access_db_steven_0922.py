@@ -61,7 +61,7 @@ class Dailydata:
         # self.url_base='http://127.0.0.1:5000/'
         self.user_url=self.url_base + 'user/'+ self.user_id
         self.daily_url = self.url_base + 'dailyinfo/'+self.user_id
-    
+        self.daily_all_url = self.url_base + 'useralldata/'+self.user_id    
     
     def add_data(self, food_name: str = None, food_calories: float = 0,
                  exercise_name: str = None, exercise_duration: float = 0, weight_target: float = 0,bmr_target: float = 0, calories_burned: float = 0):
@@ -87,23 +87,24 @@ class Dailydata:
         return r.json()
 
     def search_all_data(self, field: str, data):
-       r = requests.get(self.user_url)
-       user_daily_all = r.json()
-       json_data = { "days_before" : 365 }
-       r=requests.get(self.daily_url,json=json_data)
-       user_daily_all.update({"daily_info" : r.json()})
-       return user_daily_all
+       r = requests.get(self.daily_all_url)
+    #    user_daily_all = r.json()
+    #    json_data = { "days_before" : 365 }
+    #    r=requests.get(self.daily_url,json=json_data)
+    #    user_daily_all.update({"daily_info" : r.json()})
+       return r.json()
 
 if __name__ == "__main__":
     user_id = "u_test12348"
     # user_id = 'aa'
+    # user_id = "u_test12345"
     u=Userdata(user_id)
     # print(u.update_data('bmr', 1600))
     # print(u.delete_data())
     # d=Dailydata(user_id)
     # user = u.add_data(name="test", gender=True, age=20, weight=60, height=160, activity_level=1.2)
     print(u.search_data('aaa','bbb'))
-    print(u.get_all_columns())
+    # print(u.get_all_columns())
     # dailyinfo = d.add_data(food_name = '漢堡',food_calories= 200)
     # dailyinfo = d.add_data(exercise_name = '爬山',exercise_duration= 200)
     # dailyinfo = d.search_all_data('aaa','bbb')

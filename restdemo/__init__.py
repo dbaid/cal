@@ -6,8 +6,9 @@ from flask_migrate import Migrate
 
 
 db = SQLAlchemy()
-from restdemo.resource.user import User, UserList
+from restdemo.resource.user import User
 from restdemo.resource.daily_info import Dailyinfo
+from restdemo.resource.user_all_data import User_All_Data
 
 
 
@@ -26,5 +27,6 @@ def create_app():
     api.add_resource(User, '/user/<string:id>')   
     # api.add_resource(UserList, '/users')
     api.add_resource(Dailyinfo, '/dailyinfo/<string:id>')
+    api.add_resource(User_All_Data, '/useralldata/<string:id>')
     
     return app
