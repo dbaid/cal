@@ -1,0 +1,69 @@
+PS C:\Steven_Env\Code\cal_dev> python -m unittest discover 
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("users")
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("dailyinfo")
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("dailyinfo")
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine
+CREATE TABLE users (
+        u_id VARCHAR(64) NOT NULL,
+        name VARCHAR(64),
+        gender VARCHAR(1),
+        age INTEGER,
+        weight FLOAT,
+        height FLOAT,
+        activity_level FLOAT,
+        PRIMARY KEY (u_id)
+)
+
+
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [no key 0.00052s] ()
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine
+CREATE TABLE dailyinfo (
+        id INTEGER NOT NULL,
+        u_id VARCHAR(64),
+        date VARCHAR(64),
+        time VARCHAR(64),
+        food_name VARCHAR(64),
+        food_calories FLOAT,
+        exercise_name VARCHAR(64),
+        exercise_duration FLOAT,
+        weight_target FLOAT,
+        bmr_target FLOAT,
+        calories_burned FLOAT,
+        PRIMARY KEY (id),
+        FOREIGN KEY(u_id) REFERENCES users (u_id)
+)
+
+
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [no key 0.00065s] ()
+2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine COMMIT
+F2024-10-19 18:11:56,219 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-10-19 18:11:56,221 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2024-10-19 18:11:56,221 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-19 18:11:56,221 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("dailyinfo")
+2024-10-19 18:11:56,222 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-19 18:11:56,222 INFO sqlalchemy.engine.Engine
+DROP TABLE dailyinfo
+2024-10-19 18:11:56,223 INFO sqlalchemy.engine.Engine [no key 0.00032s] ()
+2024-10-19 18:11:56,223 INFO sqlalchemy.engine.Engine
+DROP TABLE users
+2024-10-19 18:11:56,224 INFO sqlalchemy.engine.Engine [no key 0.00027s] ()
+2024-10-19 18:11:56,224 INFO sqlalchemy.engine.Engine COMMIT
+
+======================================================================
+FAIL: test_user_create (restdemo.tests.test_user.TestUser.test_user_create)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Steven_Env\Code\cal_dev\restdemo\tests\test_user.py", line 28, in test_user_create
+    self.assertEqual(res.status_code, 201)
+AssertionError: 415 != 201
+
+----------------------------------------------------------------------
+Ran 1 test in 0.028s
+
+FAILED (failures=1)
