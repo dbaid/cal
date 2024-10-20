@@ -1,14 +1,14 @@
-PS C:\Steven_Env\Code\cal_dev> python -m unittest discover 
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [raw sql] ()
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("users")
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [raw sql] ()
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("dailyinfo")
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [raw sql] ()
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("dailyinfo")
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [raw sql] ()
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine
+PS C:\Steven_Env\Code\cal_dev> python -m unittest discover
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("users")
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("dailyinfo")
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("dailyinfo")
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-20 15:17:07,464 INFO sqlalchemy.engine.Engine
 CREATE TABLE users (
         u_id VARCHAR(64) NOT NULL,
         name VARCHAR(64),
@@ -21,8 +21,8 @@ CREATE TABLE users (
 )
 
 
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [no key 0.00052s] ()
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine
+2024-10-20 15:17:07,476 INFO sqlalchemy.engine.Engine [no key 0.00160s] ()
+2024-10-20 15:17:07,477 INFO sqlalchemy.engine.Engine
 CREATE TABLE dailyinfo (
         id INTEGER NOT NULL,
         u_id VARCHAR(64),
@@ -40,30 +40,45 @@ CREATE TABLE dailyinfo (
 )
 
 
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine [no key 0.00065s] ()
-2024-10-19 18:11:56,207 INFO sqlalchemy.engine.Engine COMMIT
-F2024-10-19 18:11:56,219 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2024-10-19 18:11:56,221 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
-2024-10-19 18:11:56,221 INFO sqlalchemy.engine.Engine [raw sql] ()
-2024-10-19 18:11:56,221 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("dailyinfo")
-2024-10-19 18:11:56,222 INFO sqlalchemy.engine.Engine [raw sql] ()
-2024-10-19 18:11:56,222 INFO sqlalchemy.engine.Engine
+2024-10-20 15:17:07,477 INFO sqlalchemy.engine.Engine [no key 0.00124s] ()
+2024-10-20 15:17:07,477 INFO sqlalchemy.engine.Engine COMMIT
+{"name": "test", "gender": "F", "age": 20, "weight": 60, "height": 160, "activity_level": 1.2}
+2024-10-20 15:17:07,501 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-10-20 15:17:07,501 INFO sqlalchemy.engine.Engine SELECT users.u_id AS users_u_id, users.name AS users_name, users.gender AS users_gender, users.age AS users_age, users.weight AS users_weight, users.height AS users_height, users.activity_level AS users_activity_level
+FROM users
+WHERE users.u_id = ?
+ LIMIT ? OFFSET ?
+2024-10-20 15:17:07,507 INFO sqlalchemy.engine.Engine [generated in 0.00128s] ('u_test12348', 1, 0)
+2024-10-20 15:17:07,508 INFO sqlalchemy.engine.Engine INSERT INTO users (u_id, name, gender, age, weight, height, activity_level) VALUES (?, ?, ?, ?, ?, ?, ?)
+2024-10-20 15:17:07,508 INFO sqlalchemy.engine.Engine [generated in 0.00101s] ('u_test12348', 'test', 'F', 20, 60.0, 160.0, 1.2)
+2024-10-20 15:17:07,508 INFO sqlalchemy.engine.Engine COMMIT
+2024-10-20 15:17:07,512 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-10-20 15:17:07,513 INFO sqlalchemy.engine.Engine SELECT users.u_id AS users_u_id, users.name AS users_name, users.gender AS users_gender, users.age AS users_age, users.weight AS users_weight, users.height AS users_height, users.activity_level AS users_activity_level
+FROM users
+WHERE users.u_id = ?
+2024-10-20 15:17:07,514 INFO sqlalchemy.engine.Engine [generated in 0.00099s] ('u_test12348',)
+2024-10-20 15:17:07,515 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-10-20 15:17:07,518 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-10-20 15:17:07,520 INFO sqlalchemy.engine.Engine SELECT users.u_id AS users_u_id, users.name AS users_name, users.gender AS users_gender, users.age AS users_age, users.weight AS users_weight, users.height AS users_height, users.activity_level AS users_activity_level
+FROM users
+WHERE users.u_id = ?
+ LIMIT ? OFFSET ?
+2024-10-20 15:17:07,520 INFO sqlalchemy.engine.Engine [cached since 0.01577s ago] ('u_test12348', 1, 0)
+2024-10-20 15:17:07,520 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-10-20 15:17:07,520 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("dailyinfo")
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine
 DROP TABLE dailyinfo
-2024-10-19 18:11:56,223 INFO sqlalchemy.engine.Engine [no key 0.00032s] ()
-2024-10-19 18:11:56,223 INFO sqlalchemy.engine.Engine
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine [no key 0.00088s] ()
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine
 DROP TABLE users
-2024-10-19 18:11:56,224 INFO sqlalchemy.engine.Engine [no key 0.00027s] ()
-2024-10-19 18:11:56,224 INFO sqlalchemy.engine.Engine COMMIT
-
-======================================================================
-FAIL: test_user_create (restdemo.tests.test_user.TestUser.test_user_create)
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine [no key 0.00085s] ()
+2024-10-20 15:17:07,524 INFO sqlalchemy.engine.Engine COMMIT
+.
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "C:\Steven_Env\Code\cal_dev\restdemo\tests\test_user.py", line 28, in test_user_create
-    self.assertEqual(res.status_code, 201)
-AssertionError: 415 != 201
+Ran 1 test in 0.086s
 
-----------------------------------------------------------------------
-Ran 1 test in 0.028s
-
-FAILED (failures=1)
+OK

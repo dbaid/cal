@@ -21,9 +21,13 @@ class TestUser(unittest.TestCase):
 
     def test_user_create(self):
         url = '/user/{}'.format(self.uid)
+                # 將資料轉換為 JSON 格式
+        json_data = json.dumps(self.user_data)
+        print(json_data)
         res = self.client().post(
             url,
-            data=self.user_data
+            data=json_data,
+            content_type='application/json'
         )
         self.assertEqual(res.status_code, 201)
         res_data = json.loads(res.get_data(as_text=True))
@@ -32,7 +36,8 @@ class TestUser(unittest.TestCase):
 
         res = self.client().post(
             url,
-            data=self.user_data
+            data=json_data,
+            content_type='application/json'
         )
         self.assertEqual(res.status_code, 200)
         res_data = json.loads(res.get_data(as_text=True))
