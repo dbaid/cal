@@ -26,8 +26,8 @@ class TestUser(unittest.TestCase):
         print(json_data)
         res = self.client().post(
             url,
-            data=json_data,
-            content_type='application/json'
+            # data=json_data,
+            json= self.user_data,
         )
         self.assertEqual(res.status_code, 201)
         res_data = json.loads(res.get_data(as_text=True))
@@ -36,8 +36,8 @@ class TestUser(unittest.TestCase):
 
         res = self.client().post(
             url,
-            data=json_data,
-            content_type='application/json'
+            # data=json_data,
+            json= self.user_data,       
         )
         self.assertEqual(res.status_code, 200)
         res_data = json.loads(res.get_data(as_text=True))
